@@ -1,0 +1,50 @@
+# ===================================
+# CRITICAL - Never push credentials!
+# ===================================
+.env
+.env.local
+.env.production
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+ENV/
+.venv
+*.egg-info/
+dist/
+build/
+
+# VS Code
+.vscode/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Data files
+data/*.pdf
+data/**/*.pdf
+
+# MLflow
+mlruns/
+mlartifacts/
+
+# Reports
+reports/
+results/
+*.csv
+
+# Logs
+*.log
+```
+
+---
+
+## **Step 4: Scroll down and commit**
+```
+Commit message: "Add .gitignore to protect credentials"
+Click "Commit changes"
