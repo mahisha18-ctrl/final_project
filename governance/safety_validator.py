@@ -10,7 +10,7 @@ from azure.ai.contentsafety import ContentSafetyClient
 from azure.core.credentials import AzureKeyCredential
 from azure.core.exceptions import HttpResponseError
 from azure.ai.contentsafety.models import AnalyzeTextOptions
-from config import config
+from src.config import Config
 from guardrails.content_safety import ContentSafety
 
 
@@ -33,11 +33,11 @@ class SafetyValidator:
 
         # Initialize Azure Content Safety client if credentials available
         self.client = None
-        if config.content_safety.endpoint and config.content_safety.key:
+        if Config.AZURE_CONTENT_SAFETY_ENDPOINT and Config.AZURE_CONTENT_SAFETY_KEY:
             try:
                 self.client = ContentSafetyClient(
-                    endpoint=config.content_safety.endpoint,
-                    credential=AzureKeyCredential(config.content_safety.key)
+                    endpoint=Config.AZURE_CONTENT_SAFETY_ENDPOINT,
+                    credential=AzureKeyCredential(Config.AZURE_CONTENT_SAFETY_KEY)
                 )
             except Exception as e:
                 print(f"Warning: Failed to init Azure Content Safety: {e}")

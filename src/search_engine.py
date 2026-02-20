@@ -37,7 +37,7 @@ class TravelSearchEngine:
             azure_endpoint=Config.AZURE_OPENAI_ENDPOINT,
             api_version=Config.AZURE_OPENAI_API_VERSION,
             deployment_name=Config.AZURE_OPENAI_DEPLOYMENT_NAME,
-            temperature=0.3
+            temperature=1
         )
 
         # Initialize Azure OpenAI Embeddings

@@ -1,16 +1,20 @@
 import os
-from src.config import Config
+from dotenv import load_dotenv
+load_dotenv()
 from langchain_community.vectorstores import AzureSearch
 
 def get_vector_store(embedding_function):
-    # Get credentials from Config
-    endpoint = Config.AZURE_SEARCH_ENDPOINT
-    key = Config.AZURE_SEARCH_KEY
-    index_name = Config.AZURE_SEARCH_INDEX_NAME
+    # Read directly from env to avoid Config caching issue
+    endpoint = os.getenv("AZURE_SEARCH_ENDPOINT")
+    key = os.getenv("AZURE_SEARCH_KEY")
+    index_name = os.getenv("AZURE_SEARCH_INDEX_NAME", "travel-kb-index")
 
     # Validate credentials
     if not endpoint or not key:
         raise ValueError("AZURE_SEARCH_ENDPOINT and AZURE_SEARCH_KEY must be set.")
+    
+    if not index_name:
+        raise ValueError("AZURE_SEARCH_INDEX_NAME must be set.")
 
     # Initialize AzureSearch vector store
     vector_store = AzureSearch(

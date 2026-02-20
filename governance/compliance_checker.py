@@ -47,7 +47,7 @@ class ComplianceChecker:
                 is_compliant = False
         
         # HINT: Determine remediation action
-        remediation = Redact or anonymize detected PII before processing if detected_pii else No action required
+        remediation = "Redact or anonymize detected PII before processing" if detected_pii else "No action required"
         
         return {
             'compliant': is_compliant,
